@@ -3,13 +3,18 @@
 Classwork for the Udacity Self Driving Car Nanodegree
 
 ---
+  This repository has an implentation of an Unscented Kalman Filter(UKF). This is my submission of the Unscented Kalman Filter project of the Udacity Self Driving Car Nanodegree.
+
 ## Discussion
 
-  Most of the code I used is from the quizzes. For this project, most of what I had to do was just put the code from the quizzes together and make all of the code function together. I got an idea of how to put the code together from https://github.com/gardenermike/unscented-kalman-filter.
+### What is an Unscented Kalman Filter?
+ A Kalman Filter is a mathmatical technique which merges measurement data, often from unrelated sensors, to measure motion and predict location. Normal Kalman Filters represent motion linearly, while an Unscented Kalman Filter does not. Instead of using a linear motion representation, UKFs can represent turns with a gaussian approximation. While this representation of motion is imperfect, it is much more accurate representation of real-world vehicles than linear motion.
 
-  While making the UKF(Unscented Kalman Filter), I ran into several serious bugs which took a long time to fix. The first bug I ran into resulted in a matrix-size error when the UKF started running. I don't even remember what caused the error, but it took a while for me to find the problem. After that, I still had a bug where matrix values would turn to non-numbers, causing the simulator and UKF to lock up and not work. As with the matrix-size error bug, I do not remember the cause. The last bug I ran into, and probably the one that took the most time to find the cause of and fix, was a bug that caused matrix values to shoot up to clearly incorrect numbers often greater than googol cubed, or 10^300. The cause of this bug was the fact that the P matrix was not properly initialized as an identity matrix.
+### Building the filter
 
-  After I fixed all the serious bugs, all I had to do was a little bit of tuning the hyperparameters longitudinal acceleration standard deviation and yaw acceleration standard deviation. The starting value for these was 30, which is ridiculusly high. The values that worked well for me were 1.8 for longitudinal acceleration and 1.5 for yaw acceleration. The final root-mean-squared-error values I got with those hyperparameter values were:
+  To build the UKF, I used a lot of code from the quizzes in the Nanodegree. While building this project, the primary thing I had to do was put together the quiz code and make it function as a whole. I got an idea of how to put the code together from https://github.com/gardenermike/unscented-kalman-filter.
+
+  While making my UKF, I ran into several serious bugs which each took a while to fix. However, after I fixed all the serious bugs, all I had to do was a little bit of tuning two hyperparameters: longitudinal acceleration standard deviation, and yaw acceleration standard deviation. The starting value for these was 30, which is ridiculously high. The values that worked well for me were 1.8 for longitudinal acceleration and 1.5 for yaw acceleration. The final root-mean-squared-error values I got with those hyperparameter values were:
 
 #### X: 0.0736
 
